@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        font-family: arial;
+      }
+      :root{
+        --grid-size: 4;
+        --row-size: 20vmin;
+        --row-gap: 2vmin;
+      }
+
+
+      body {
+        background: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 7.5vmin;
+      }
+      #game-board {
+
+        height: 86vmin;
+        display: grid;
+        grid-template-columns: repeat(var(--grid-size), var(--row-size));
+        grid-template-rows: repeat(var(--grid-size), var(--row-size));
+        background: #ccc;
+        gap: var(--row-gap);
+        border-radius: 1vmin;
+        padding: 2vmin;
+        position: relative;
+      }
+
+      .cell {
+        background: #555;
+        border-radius: 1vmin;
+      }
+      .tiles {
+        --x: 1;
+        --y: 2;
+        --background-brightness: 80%;
+        --text-brightness: 20%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: var(--row-size);
+        width: var(--row-size);
+        background-color: red;
+        border-radius: 1vmin;
+        font-weight: bolder;
+        top: calc(
+          var(--y) * (var(--row-size) + var(--row-gap)) + var(--row-gap)
+        );
+        left: calc(
+          var(--x) * (var(--row-size) + var(--row-gap)) + var(--row-gap)
+        );
+        background-color: hsl(200, 50%, var(--background-brightness));
+        color: hsl(200, 25%, var(--text-brightness));
+        animation: show 300ms ease-in-out;
+        transition: 100ms ease-in-out;
+      }
+
+      @keyframes show{
+        0%{
+            opacity: .5;
+            transform: scale(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-board">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="tiles">2</div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
